@@ -31,10 +31,10 @@ syn1 = 2 * np.random.random((2,1)) - 1
 for iter in range(10000):
 
     l0 = X
-    l1 = sigmoid_funct(np.dot(l0, syn0)) #Compute the output of the hidden layer neurons
+    l1 = s(np.dot(l0, syn0)) #Compute the output of the hidden layer neurons
     #'np.dot(l0,syn0)' is a linear transformation that computes the weighted sum of inputs for each hidden layer neuron
     #l0 is the unput data (given above as [0,0] or [0,1]
-    l2 = sigmoid_funct(np.dot(l1, syn1)) #Compute the output of the final prediction for each input
+    l2 = s(np.dot(l1, syn1)) #Compute the output of the final prediction for each input
     #Linear transformation that performs matrix multiplication between l1 and syn1
     #Take the outputs from the hidden layer l1 and compute a weighted sum using syn1
 
@@ -48,9 +48,9 @@ for iter in range(10000):
 
     #Important to know: 'delta' represents the error gradiant in neural networks
     #They are partial derivatvies of the loss with respect to neuron outputs
-    l2_delta = l2_error * sigmoid_derivative(l2)
+    l2_delta = l2_error * s_derivative(l2)
     l1_error = l2_delta.dot(syn1.T)
-    l1_delta = l1_error * sigmoid_derivative(l1)
+    l1_delta = l1_error * s_derivative(l1)
 
 
     syn1 += l1.T.dot(l2_delta) #Update weights between hidden layer and output layer
@@ -61,3 +61,4 @@ print("\nFinal prediction results: ") #A sigmoid function outputs a value betwee
 print(l2) #'l2' holds the final output prediction of the neural network after training
 
 #Print 'l2' in order to see what the network has learned
+
