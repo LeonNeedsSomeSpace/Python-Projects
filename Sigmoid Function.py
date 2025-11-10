@@ -6,11 +6,11 @@
 import numpy as np
 
 #Activation function for non-linearity in the function
-def sigmoid_funct(x):
+def s(x):
     return 1 / (1 + np.exp(-x))
 
 #Derivative of the sigmoiod function assuming input x is sigmoid output already
-def sigmoid_derivative(x):
+def s_derivative(x):
     return x * (1 -x)
 
 #Define 2 matrices that holds the input data (features) and expected outputs (labels)
@@ -59,4 +59,5 @@ for iter in range(10000):
 print("\nFinal prediction results: ") #A sigmoid function outputs a value between 0 and 1
 #It predicts the probability that a given input belongs to a particular class (such as a "positive" class)
 print(l2) #'l2' holds the final output prediction of the neural network after training
+
 #Print 'l2' in order to see what the network has learned
